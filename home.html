@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link rel="stylesheet" href="progress.css">
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.15.1/moment.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/js/bootstrap-datepicker.min.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datepicker/1.4.1/css/bootstrap-datepicker3.css"/>
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker.min.css"> 
+  <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/css/bootstrap-datetimepicker-standalone.css"> 
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.43/js/bootstrap-datetimepicker.min.js"></script>
+  <script type="text/javascript" src="progress.js"></script>
+</head>
+<br />
+
+<body>
+  <div class="nw-header">
+    <div class="nwh-left">
+        <div class="logo">
+          <a href="https://www.xposuremotors.co.nz/"> <img src="logo.png" alt=""></a>
+        </div>
+    </div>
+</div>
+
+<br />
+<br />
+<div class="row">
+    <div class="col-md-6 col-md-offset-2">
+        <form id="msform">
+            <!-- progressbar -->
+            <ul id="progressbar">
+                <li class="active">Personal Details</li>
+                <li>License</li>
+                <li>Address</li>
+                <li>Employment</li>
+            </ul>
+            <!-- fieldsets -->
+            <fieldset>
+                <h2 class="fs-title">Personal Details</h2>
+                <h3 class="fs-subtitle">Tell us something more about you</h3>
+
+                <div class="form-group row">
+                  <label for="title" class="col-sm-4 col-form-label">Title</label>
+                  <div class="col-sm-8">
+                    <select class="form-control" id="title">
+                      <option>Mr</option>
+                      <option>Mrs</option>
+                      <option>Miss</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="fName" class="col-sm-4 col-form-label">First Name</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" type="text" name="fname" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="lName" class="col-sm-4 col-form-label">Last Name</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" type="text" name="lname" placeholder="" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="dob" class="col-sm-4 col-form-label">Date of Birth</label>
+                  <div class="col-sm-6">
+                    
+                    <div class='input-group date' id='datetimepicker1'>
+                        <input type='text' class="form-control" id="date" name="date" placeholder="MM/DD/YYY" type="text"/>
+                        <!--
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span> -->
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+
+                            var date_input=$('input[name="date"]'); //our date input has the name "date"
+                            var container=$('.bootstrap-iso form').length>0 ? $('.bootstrap-iso form').parent() : "body";
+                            var options={
+                              format: 'mm/dd/yyyy',
+                              container: container,
+                              todayHighlight: true,
+                              autoclose: true,
+                              changeMonth: true,
+                              changeYear: true
+                            };
+                            date_input.datepicker(options);
+                        });
+                    </script>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="email" class="col-sm-4 col-form-label">Email</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" type="text" name="email" placeholder="someone@something.com" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="mobileNum" class="col-sm-4 col-form-label">Mobile Number</label>
+                  <div class="col-sm-8">
+                    <input class="form-control" type="text" name="mobile" placeholder="+64123456789"  />
+                  </div>
+                </div>
+
+
+                <div class="form-group row">
+                  <label for="maritalstatus" class="col-sm-4 col-form-label">Marital Status</label>
+                  <div class="col-sm-8">
+                    <select class="form-control" id="MaritalStatus">
+                      <option>Single</option>
+                      <option>Married</option>
+                      <option>Separated</option>
+                      <option>Divorced</option>
+                      <option>Widowed</option>
+                      <option>Cohabiting</option>
+                      <option>De Facto</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="dependents" class="col-sm-4 col-form-label">Dependents</label>
+                  <div class="col-sm-8">
+                    <select class="form-control" id="dependents">
+                      <option>None</option>
+                      <option>1 child</option>
+                      <option>2 children</option>
+                      <option>3 children</option>
+                      <option>4 children</option>
+                      <option>5 children</option>
+                      <option>6 children</option>
+                    </select>
+                  </div>
+                </div>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+
+            <!-- fieldsets for licensing -->
+            <fieldset>
+                <h2 class="fs-title">License</h2>
+
+                  <div class="form-group row">
+                    <label for="licensetype" class="col-sm-4 col-form-label">Driver's Licence Type</label>
+                    <div class="col-sm-8">
+                      <select class="form-control" id="licensetype">
+                        <option>Learner</option>
+                        <option>Restricted</option>
+                        <option>Full</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="DLnumber" class="col-sm-4 col-form-label">Driver's Licence No</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="DLnumber" placeholder="Drivers Licence No"/>
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="VerisonNumber" class="col-sm-4 col-form-label">Version No</label>
+                    <div class="col-sm-8">
+                      <input type="text" name="VerisonNumber" placeholder="Version No"/>
+                    </div>
+                  </div>
+                  
+                  <div class="form-group row">
+                  <label for="ExpDate" class="col-sm-4 col-form-label">Expiry Date</label>
+                  <div class="col-sm-6">
+                    <div class='input-group date' id='datetimepicker2'>
+                        <input type='text' class="form-control" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                    <script type="text/javascript">
+                        $(function () {
+                            $('#datetimepicker2').datetimepicker({
+                              format: 'MM/DD/YYYY'
+                            });
+                        });
+                    </script>
+                  </div>
+                </div>
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+
+            <!-- fieldsets for Address -->
+            <fieldset>
+                <h2 class="fs-title">Address</h2>
+
+                <div class="form-group row">
+                  <label for="location" class="col-sm-4 col-form-label">Location</label>
+                  <div class="col-sm-6">
+                      <input type="text" name="address" placeholder="Enter location" class="form-control" />
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="propertystatus" class="col-sm-4 col-form-label">Property Status</label>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="propertystatus">
+                      <option>Boarding</option>
+                      <option>Own with Mortgage</option>
+                      <option>Living with Partner</option>
+                      <option>Own Outright</option>
+                      <option>Living with Parents</option>
+                  </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="yearsLived" class="col-sm-4 col-form-label">Years Lived</label>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="yearsLived">
+                      <option>00 years</option>
+                      <option>01 years</option>
+                      <option>02 years</option>
+                      <option>03 years</option>
+                      <option>04 years</option>
+                      <option>05 years</option>
+                      <option>06 years</option>
+                      <option>07 years</option>
+                      <option>08 years</option>
+                      <option>09 years</option>
+                      <option>10+ years</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                  <label for="monthsLived" class="col-sm-4 col-form-label">Months Lived</label>
+                  <div class="col-sm-6">
+                    <select class="form-control" id="monthsLived" >
+                      <option>00 months</option>
+                      <option>01 months</option>
+                      <option>02 months</option>
+                      <option>03 months</option>
+                      <option>04 months</option>
+                      <option>05 months</option>
+                      <option>06 months</option>
+                      <option>07 months</option>
+                      <option>08 months</option>
+                      <option>09 months</option>
+                      <option>10 months</option>
+                      <option>11 months</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row" id="oldAddress" hidden="true">
+                  <label for="prevAddress" class="col-sm-4 col-form-label">Previous Address</label>
+                  <div class="col-sm-6">
+                    <input type="text" name="oldAddress" placeholder="Enter old location"/>
+                  </div>
+                </div>
+
+              
+                <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                <input type="button" name="next" class="next action-button" value="Next"/>
+            </fieldset>
+
+            <!-- Fieldset for Employment -->
+            <fieldset>
+                <h2 class="fs-title">Employment</h2>
+                <div class="form-group">
+                  <label for="employmentType" class="col-sm-4 col-form-label">Employment Type</label>
+                  <select class="form-control" id="employmentType">
+                    <option></option>
+                    <option>Full Time</option>
+                    <option>Part Time</option>
+                    <option>Casual</option>
+                    <option>Self Employed</option>
+                    <option>WINZ</option>
+                    <option>IRD</option>
+                    <option>ACC</option>
+                    <option>Boarder Income</option>
+                    <option>Student Allowance</option>
+                  </select>
+                  
+                  <br />
+
+                  <div class="form-group" id="workedSomeTime" hidden="true">
+
+                    <div class="form-group row">
+                      <label for="companyName1" class="col-sm-4 col-form-label">Company Name</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="CompanyName1" placeholder="Company Name"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="jobTitle1" class="col-sm-4 col-form-label">Job Title</label>
+                      <div class="col-sm-8">
+                        <input type="text" name="jobTitle1" placeholder="Job Title"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="payedFreq" class="col-sm-4 col-form-label">Pay Frequency</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="payedFreq">
+                          <option>Weekly</option>
+                             <option>Fortnightly</option>
+                             <option>Monthly</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="amountInHand" class="col-sm-4 col-form-label">Amount In Hand</label>
+                      <div class="col-sm-8">
+                        <input type="text" class="form-control" name="AmountInHand" placeholder="$"/>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="yearsWorked1" class="col-sm-4 col-form-label">Years Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="yearsWorked1">
+                          <option>00 years</option>
+                          <option>01 years</option>
+                          <option>02 years</option>
+                          <option>03 years</option>
+                          <option>04 years</option>
+                          <option>05 years</option>
+                          <option>06 years</option>
+                          <option>07 years</option>
+                          <option>08 years</option>
+                          <option>09 years</option>
+                          <option>10+ years</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="monthsWorked1" class="col-sm-4 col-form-label">Months Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="monthsWorked1">
+                          <option>00 months</option>
+                          <option>01 months</option>
+                          <option>02 months</option>
+                          <option>03 months</option>
+                          <option>04 months</option>
+                          <option>05 months</option>
+                          <option>06 months</option>
+                          <option>07 months</option>
+                          <option>08 months</option>
+                          <option>09 months</option>
+                          <option>10 months</option>
+                          <option>11 months</option>
+                        </select>
+                      </div>
+                    </div>     
+                    
+                    <div class="form-group row">
+                      <label for="moreIncome" class="col-sm-4 col-form-label">Do you have More Income</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="moreIncome" name="moreIncome" placeholder="$" />
+                      </div>
+                    </div>     
+                  </div> <!-- End of if Employed Form-->
+
+                  <div class="form-group" id="win2" hidden="true">
+
+                    <div class="form-group row">
+                      <label for="totalEntitlement1" class="col-sm-4 col-form-label">Total Entitlement</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="totalEntitlement1" name="totalEntitlement1" placeholder="$" />
+                      </div>
+                    </div>
+
+
+                    <div class="form-group row">
+                      <label for="AmountInHand" class="col-sm-4 col-form-label">Amount In Hand</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="AmountInHand" name="AmountInHand" placeholder="$" />
+                      </div>
+                    </div>
+                  
+                    <div class="form-group row">
+                      <label for="win2YearsWorked" class="col-sm-4 col-form-label">Years Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="win2YearsWorked">
+                          <option>00 years</option>
+                          <option>01 years</option>
+                          <option>02 years</option>
+                          <option>03 years</option>
+                          <option>04 years</option>
+                          <option>05 years</option>
+                          <option>06 years</option>
+                          <option>07 years</option>
+                          <option>08 years</option>
+                          <option>09 years</option>
+                          <option>10+ years</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="win2MonthsWorked" class="col-sm-4 col-form-label">Months Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="win2MonthsWorked">
+                          <option>00 months</option>
+                          <option>01 months</option>
+                          <option>02 months</option>
+                          <option>03 months</option>
+                          <option>04 months</option>
+                          <option>05 months</option>
+                          <option>06 months</option>
+                          <option>07 months</option>
+                          <option>08 months</option>
+                          <option>09 months</option>
+                          <option>10 months</option>
+                          <option>11 months</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="moreIncome" class="col-sm-4 col-form-label">Do you have More Income</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="moreIncome" name="moreIncome" placeholder="$" />
+                      </div>
+                    </div>     
+                  </div>
+
+                  <div class="form-group" id="irdOrAcc" hidden="true">
+
+                    <div class="form-group row">
+                      <label for="irdOrAccAmountInHand" class="col-sm-4 col-form-label">Amount In Hand</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="irdOrAccAmountInHand" name="irdOrAccAmountInHand" placeholder="$" />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="irdOrAccYearsWorked" class="col-sm-4 col-form-label">Years Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="irdOrAccYearsWorked">
+                          <option>00 years</option>
+                          <option>01 years</option>
+                          <option>02 years</option>
+                          <option>03 years</option>
+                          <option>04 years</option>
+                          <option>05 years</option>
+                          <option>06 years</option>
+                          <option>07 years</option>
+                          <option>08 years</option>
+                          <option>09 years</option>
+                          <option>10+ years</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="irdOrAccMonthsWorked" class="col-sm-4 col-form-label">Months Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="irdOrAccMonthsWorked">
+                          <option>00 months</option>
+                          <option>01 months</option>
+                          <option>02 months</option>
+                          <option>03 months</option>
+                          <option>04 months</option>
+                          <option>05 months</option>
+                          <option>06 months</option>
+                          <option>07 months</option>
+                          <option>08 months</option>
+                          <option>09 months</option>
+                          <option>10 months</option>
+                          <option>11 months</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="moreIncome" class="col-sm-4 col-form-label">Do you have More Income</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="moreIncome" name="moreIncome" placeholder="$" />
+                      </div>
+                    </div>  
+                  </div>
+
+                  <div class="form-group" id="boarderIncome" hidden="true">
+                    <div class="form-group row">
+                      <label for="boarderAmountInHand" class="col-sm-4 col-form-label">Amount In Hand</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="boarderAmountInHand" name="boarderAmountInHand" placeholder="$" />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="boarderPayedFreq" class="col-sm-4 col-form-label">Amount In Hand</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="payedFreq" >
+                             <option>Weekly</option>
+                             <option>Fortnightly</option>
+                             <option>Monthly</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                      <label for="boarderPayedMode" class="col-sm-4 col-form-label">Payment Mode</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="boarderPayedMode" >
+                          <option>Cash</option>
+                          <option>Banked</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="moreIncome" class="col-sm-4 col-form-label">Do you have More Income</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="moreIncome" name="moreIncome" placeholder="$" />
+                      </div>
+                    </div>  
+                    
+                  </div>
+
+                  <div class="form-group" id="studentAllowance" hidden="true">
+
+                    <div class="form-group row">
+                      <label for="studentAmountInHand" class="col-sm-4 col-form-label">Amount In Hand</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="studentAmountInHand" name="studentAmountInHand" placeholder="$" />
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="studentPayedFreq" class="col-sm-4 col-form-label">Payment Frequency</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="payedFreq" >
+                             <option>Weekly</option>
+                             <option>Fortnightly</option>
+                             <option>Monthly</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="studentYearsWorked" class="col-sm-4 col-form-label">Years Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="studentYearsWorked">
+                          <option>00 years</option>
+                          <option>01 years</option>
+                          <option>02 years</option>
+                          <option>03 years</option>
+                          <option>04 years</option>
+                          <option>05 years</option>
+                          <option>06 years</option>
+                          <option>07 years</option>
+                          <option>08 years</option>
+                          <option>09 years</option>
+                          <option>10+ years</option>
+                        </select>
+                      </div>
+                    </div>
+                    
+                    <div class="form-group row">
+                      <label for="studentMonthsWorked" class="col-sm-4 col-form-label">Months Worked</label>
+                      <div class="col-sm-8">
+                        <select class="form-control" id="studentMonthsWorked" >
+                          <option>00 months</option>
+                          <option>01 months</option>
+                          <option>02 months</option>
+                          <option>03 months</option>
+                          <option>04 months</option>
+                          <option>05 months</option>
+                          <option>06 months</option>
+                          <option>07 months</option>
+                          <option>08 months</option>
+                          <option>09 months</option>
+                          <option>10 months</option>
+                          <option>11 months</option>
+                        </select>
+                      </div>
+                    </div>
+
+                    <div class="form-group row">
+                      <label for="moreIncome" class="col-sm-4 col-form-label">Do you have More Income</label>
+                      <div class="col-sm-8">
+                        <input class="form-control" type="text" id="moreIncome" name="moreIncome" placeholder="$" />
+                      </div>
+                    </div>  
+                  </div>       
+                </div>
+                  <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
+                  <input type="submit" name="submit" class="submit action-button" value="Submit"/>  
+                </div>
+            </fieldset>
+            
+        </form>
+    </div>
+</div>
+
+</body>
+</html>
